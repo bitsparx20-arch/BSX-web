@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 
 export default function AboutUs() {
@@ -45,7 +44,7 @@ export default function AboutUs() {
                 Transforming Ideas Into Reality
               </h3>
               <p className="text-base sm:text-lg text-gray-600 mb-4 sm:mb-6 leading-relaxed">
-                From custom websites to scalable software, we don't just build technology — we craft experiences tailored to your unique business needs. Whether you're a startup finding your digital footing or an established brand aiming to innovate, we design solutions that grow with you.
+                From custom websites to scalable software, we don&apos;t just build technology — we craft experiences tailored to your unique business needs. Whether you&apos;re a startup finding your digital footing or an established brand aiming to innovate, we design solutions that grow with you.
               </p>
               <div className="flex flex-wrap gap-3 sm:gap-4">
                 <div className="bg-gradient-to-r from-blue-50 to-cyan-50 px-4 sm:px-6 py-2 sm:py-3 rounded-full border border-blue-200">
@@ -243,7 +242,7 @@ export default function AboutUs() {
               Why Bitsparx?
             </h3>
             <p className="text-lg sm:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed px-4">
-              Because we don't just deliver code — we deliver value, creativity, and results. Our approach blends technical expertise with a deep understanding of business goals, ensuring technology works for you.
+              Because we don&apos;t just deliver code — we deliver value, creativity, and results. Our approach blends technical expertise with a deep understanding of business goals, ensuring technology works for you.
             </p>
           </div>
 
@@ -335,7 +334,7 @@ export default function AboutUs() {
             Ready to Spark Innovation?
           </h3>
           <p className="text-lg sm:text-xl text-blue-100 mb-6 sm:mb-8 max-w-3xl mx-auto px-4">
-            Together, let's spark innovation and build the future of your brand. Get started with a free consultation today.
+            Together, let&apos;s spark innovation and build the future of your brand. Get started with a free consultation today.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <Link 

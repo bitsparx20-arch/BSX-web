@@ -1,4 +1,3 @@
-import Hero from './components/hero';
 import Hero1 from './components/hero1';
 import Hero3 from './components/hero3';
 import Link from 'next/link';

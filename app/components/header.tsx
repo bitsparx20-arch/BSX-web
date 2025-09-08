@@ -1,6 +1,7 @@
 'use client'
 import { useState } from "react"
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,9 +18,11 @@ export default function Header() {
                     <div className="flex-shrink-0">
                         <Link href="/" className="flex items-center group">
                             <div className="relative">
-                                <img 
+                                <Image 
                                     src="/logo1.png" 
                                     alt="Bitsparx Logo" 
+                                    width={112}
+                                    height={112}
                                     className="h-28 w-auto transition-all duration-500 group-hover:scale-110 group-hover:drop-shadow-2xl group-hover:rotate-1"
                                 />
                                 {/* Animated Glow Effect */}

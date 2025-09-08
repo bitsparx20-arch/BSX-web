@@ -1,13 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Services() {
   const [activeService, setActiveService] = useState('automation');
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedService, setSelectedService] = useState<any>(null);
+  const [selectedService, setSelectedService] = useState<typeof services[keyof typeof services] | null>(null);
 
   const openModal = (serviceKey: string) => {
     setSelectedService(services[serviceKey as keyof typeof services]);
@@ -218,7 +217,7 @@ export default function Services() {
                         {service.description}
                       </p>
                       {/* Decorative Quote Mark */}
-                      <div className={`absolute -top-0.5 -left-0.5 text-sm sm:text-lg text-gray-200 font-serif opacity-10`}>"</div>
+                      <div className={`absolute -top-0.5 -left-0.5 text-sm sm:text-lg text-gray-200 font-serif opacity-10`}>&ldquo;</div>
                     </div>
                     
                     {/* Enhanced Features Section */}
@@ -385,7 +384,7 @@ export default function Services() {
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-xl border border-white/20">
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3 sm:mb-4">Ready to Get Started?</h2>
             <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8 max-w-2xl mx-auto px-4">
-              Let's discuss how our services can transform your business. Get in touch with our team to explore the possibilities.
+              Let&apos;s discuss how our services can transform your business. Get in touch with our team to explore the possibilities.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">

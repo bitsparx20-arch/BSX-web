@@ -22,9 +22,11 @@ export default function Footer() {
               <div className="mb-6">
                 <Link href="/" className="flex items-center group">
                   <div className="relative">
-                    <img 
+                    <Image 
                       src="/logo1.png" 
                       alt="Bitsparx Logo" 
+                      width={64}
+                      height={64}
                       className="h-16 w-auto transition-all duration-500 group-hover:scale-110 group-hover:drop-shadow-xl"
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 via-cyan-400/20 to-blue-400/20 rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-500 blur-md scale-110 group-hover:scale-125"></div>

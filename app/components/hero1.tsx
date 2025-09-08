@@ -2,14 +2,8 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
 
 export default function Hero1() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
 
   return (
     <section className="relative bg-gradient-to-br from-slate-50 via-blue-50 to-cyan-50 overflow-hidden">
@@ -58,11 +52,11 @@ export default function Hero1() {
               {/* Description */}
               <div className="space-y-4 max-w-2xl mx-auto lg:mx-0">
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  At <span className="font-medium text-gray-800">Bitsparx</span>, we specialize in building customized software and websites that bring your company's vision to life. By combining cutting-edge technologies like Generative AI, Python, Web Development, and Automation, we create intelligent, scalable, and user-focused solutions.
+                  At <span className="font-medium text-gray-800">Bitsparx</span>, we specialize in building customized software and websites that bring your company&apos;s vision to life. By combining cutting-edge technologies like Generative AI, Python, Web Development, and Automation, we create intelligent, scalable, and user-focused solutions.
                 </p>
 
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  Whether it's streamlining operations, enhancing customer experiences, or unlocking new opportunities, our goal is to craft digital products that drive innovation and empower businesses to grow.
+                  Whether it&apos;s streamlining operations, enhancing customer experiences, or unlocking new opportunities, our goal is to craft digital products that drive innovation and empower businesses to grow.
                 </p>
               </div>
             </div>
@@ -194,7 +188,7 @@ export default function Hero1() {
               Ready to Transform Your Business?
             </h3>
             <p className="text-lg text-gray-600">
-              Let's build something amazing together with cutting-edge technology and innovative solutions.
+              Let&apos;s build something amazing together with cutting-edge technology and innovative solutions.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 

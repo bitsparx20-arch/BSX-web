@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 
 export default function ContactUs() {
@@ -63,7 +62,7 @@ export default function ContactUs() {
         <div className="text-center mb-8 sm:mb-12">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-3 sm:mb-4 leading-tight tracking-tight">
             <span className="block mb-2 bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent">
-              Let's Build Something
+              Let&apos;s Build Something
             </span>
             <span className="block text-lg sm:text-xl md:text-2xl lg:text-3xl font-light text-gray-700 tracking-wide">
               Amazing Together
@@ -73,7 +72,7 @@ export default function ContactUs() {
           <div className="relative">
             <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed font-light tracking-wide px-4 relative z-10">
               Ready to transform your ideas into powerful digital solutions? Get in touch with our team of experts. 
-              We're here to help you build the future, one line of code at a time.
+              We&apos;re here to help you build the future, one line of code at a time.
             </p>
             {/* Decorative underline */}
             <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 rounded-full mt-3"></div>
@@ -93,7 +92,7 @@ export default function ContactUs() {
                   <svg className="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-green-800 font-medium">Message sent successfully! We'll get back to you soon.</span>
+                  <span className="text-green-800 font-medium">Message sent successfully! We&apos;ll get back to you soon.</span>
                 </div>
               </div>
             )}
@@ -332,7 +331,7 @@ export default function ContactUs() {
           <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 rounded-2xl p-6 sm:p-8 text-white">
             <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Ready to Start Your Project?</h3>
             <p className="text-blue-100 mb-4 sm:mb-6 max-w-2xl mx-auto text-sm sm:text-base px-4">
-              Let's discuss how we can help bring your vision to life. Our team is ready to collaborate with you on innovative solutions.
+              Let&apos;s discuss how we can help bring your vision to life. Our team is ready to collaborate with you on innovative solutions.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
               <Link 
