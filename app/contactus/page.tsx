@@ -238,6 +238,7 @@ export default function ContactUs() {
                   <div>
                     <p className="text-sm font-medium text-gray-900">Email</p>
                     <p className="text-gray-600">bitsparx20@gmail.com</p>
+                    <p className="text-gray-600">admin@bitsparx.com</p>
                   </div>
                 </div>
 

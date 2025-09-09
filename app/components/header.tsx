@@ -19,7 +19,7 @@ export default function Header() {
                         <Link href="/" className="flex items-center group">
                             <div className="relative">
                                 <Image 
-                                    src="/logo1.png" 
+                                    src="/logo_bg.png" 
                                     alt="Bitsparx Logo" 
                                     width={112}
                                     height={112}

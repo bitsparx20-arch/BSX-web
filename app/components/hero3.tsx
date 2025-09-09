@@ -54,21 +54,6 @@ export default function Hero3() {
                     </div>
                 </div>
                 
-                {/* Bottom Row - Evenly spaced */}
-                <div className="absolute bottom-20 left-1/3 animate-bounce delay-1000">
-                    <div className="w-10 h-10 bg-white/80 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg">
-                        <svg className="w-5 h-5 text-orange-600" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
-                    </div>
-                </div>
-                <div className="absolute bottom-16 right-1/3 animate-bounce delay-200">
-                    <div className="w-10 h-10 bg-white/80 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg">
-                        <svg className="w-5 h-5 text-red-600" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11H7v-2h10v2z"/>
-                        </svg>
-                    </div>
-                </div>
             </div>
 
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-[calc(100dvh-7rem)] flex items-center py-8 lg:py-12">

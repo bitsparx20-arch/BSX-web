@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function AboutUs() {
   return (
@@ -300,27 +301,14 @@ export default function AboutUs() {
             </div>
 
             <div className="relative mt-8 lg:mt-0">
-              <div className="bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 rounded-2xl p-2 shadow-2xl">
-                <div className="bg-white rounded-xl p-6 sm:p-8 h-80 sm:h-96">
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="flex space-x-2">
-                      <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                      <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                      <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    </div>
-                    <div className="text-sm font-semibold text-gray-600">BITSPARX Dashboard</div>
-                  </div>
-                  <div className="space-y-4">
-                    <div className="h-4 bg-gradient-to-r from-blue-200 to-cyan-200 rounded w-full"></div>
-                    <div className="h-4 bg-gradient-to-r from-purple-200 to-pink-200 rounded w-4/5"></div>
-                    <div className="h-4 bg-gradient-to-r from-cyan-200 to-blue-200 rounded w-3/4"></div>
-                    <div className="h-4 bg-gradient-to-r from-green-200 to-emerald-200 rounded w-5/6"></div>
-                    <div className="h-4 bg-gradient-to-r from-blue-200 to-purple-200 rounded w-2/3"></div>
-                    <div className="absolute top-12 right-6 text-xs font-bold text-blue-600 opacity-80">SUCCESS</div>
-                    <div className="absolute bottom-8 right-6 w-12 h-2 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full"></div>
-                    <div className="absolute top-1/2 left-6 w-3 h-3 bg-cyan-400 rounded-full animate-pulse"></div>
-                  </div>
-                </div>
+              <div className="rounded-2xl shadow-2xl overflow-hidden">
+                <Image 
+                  src="/img123.jpg" 
+                  alt="Bitsparx Technology" 
+                  width={600}
+                  height={400}
+                  className="w-full h-80 sm:h-96 object-cover rounded-2xl"
+                />
               </div>
             </div>
           </div>

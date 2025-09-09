@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     siteName: "Bitsparx",
     images: [
       {
-        url: "/logo1.png",
+        url: "/logo_bg.png",
         width: 1200,
         height: 630,
         alt: "Bitsparx Logo",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Bitsparx - Custom Tech, Crafted for You",
     description: "Transform ideas into powerful digital solutions with custom software and web development services.",
-    images: ["/logo1.png"],
+    images: ["/logo_bg.png"],
   },
 };
 
