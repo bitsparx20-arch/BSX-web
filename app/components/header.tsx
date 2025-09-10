@@ -61,6 +61,14 @@ export default function Header() {
                             <div className="absolute inset-0 bg-white/80 backdrop-blur-sm rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-500 scale-95 group-hover:scale-100"></div>
                             <div className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-cyan-500 group-hover:w-full transition-all duration-500 transform -translate-x-1/2"></div>
                         </Link>
+                        <Link 
+                            href="/privacy" 
+                            className="text-gray-700 hover:text-blue-600 px-5 py-3 rounded-xl text-base font-semibold transition-all duration-500 hover:bg-white/80 backdrop-blur-sm relative group hover:scale-105 hover:shadow-lg"
+                        >
+                            <span className="relative z-10 group-hover:translate-y-[-2px] transition-all duration-500">Privacy</span>
+                            <div className="absolute inset-0 bg-white/80 backdrop-blur-sm rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-500 scale-95 group-hover:scale-100"></div>
+                            <div className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-cyan-500 group-hover:w-full transition-all duration-500 transform -translate-x-1/2"></div>
+                        </Link>
                         {/*  */}
                         <Link 
                             href="/contactus" 
@@ -141,6 +149,13 @@ export default function Header() {
                         onClick={() => setIsMenuOpen(false)}
                     >
                         Team
+                    </Link>
+                    <Link 
+                        href="/privacy" 
+                        className="text-gray-600 hover:text-blue-600 block px-3 py-2 rounded-lg text-base font-medium transition-all duration-300 hover:bg-white/50"
+                        onClick={() => setIsMenuOpen(false)}
+                    >
+                        Privacy
                     </Link>
                     <Link 
                         href="/contactus" 

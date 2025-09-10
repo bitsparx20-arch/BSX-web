@@ -1,21 +1,22 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Services() {
   const [activeService, setActiveService] = useState('automation');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState<typeof services[keyof typeof services] | null>(null);
 
-  const openModal = (serviceKey: string) => {
-    setSelectedService(services[serviceKey as keyof typeof services]);
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setSelectedService(null);
+  // Mapping of service keys to illustrative images from /public
+  const serviceImages: Record<string, string> = {
+    automation: '/img1.jpg',
+    webDevelopment: '/hero1.png',
+    software: '/img3.jpg',
+    data: '/img4.jpg',
+    server: '/img5.jpg',
+    marketing: '/img6.jpg',
   };
 
   const services = {
@@ -103,6 +104,29 @@ export default function Services() {
       icon: "📈",
       color: "from-teal-500 to-green-500"
     }
+  };
+
+  // Auto-rotation functionality
+  useEffect(() => {
+    const serviceKeys = Object.keys(services);
+    let currentIndex = serviceKeys.indexOf(activeService);
+    
+    const interval = setInterval(() => {
+      currentIndex = (currentIndex + 1) % serviceKeys.length;
+      setActiveService(serviceKeys[currentIndex]);
+    }, 6000); // Change every 6 seconds
+
+    return () => clearInterval(interval);
+  }, [activeService, services]);
+
+  const openModal = (serviceKey: string) => {
+    setSelectedService(services[serviceKey as keyof typeof services]);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedService(null);
   };
 
   return (
@@ -251,24 +275,16 @@ export default function Services() {
 
                   {/* Enhanced Service Visual */}
                   <div className="lg:col-span-1 relative group h-48 sm:h-full mt-4 lg:mt-0">
-                    {/* Main Visual Container */}
-                    <div className={`w-full h-full bg-gradient-to-br ${service.color} rounded-md flex items-center justify-center shadow-sm group-hover:shadow-md transition-all duration-150 group-hover:scale-105 relative overflow-hidden`}>
-                      {/* Background Pattern */}
-                      <div className="absolute inset-0 opacity-10">
-                        <div className="absolute top-1 right-1 w-4 sm:w-5 h-4 sm:h-5 border border-white/20 rounded-full"></div>
-                        <div className="absolute bottom-1.5 left-1.5 w-2 sm:w-3 h-2 sm:h-3 border border-white/20 rounded-full"></div>
-                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 sm:w-10 h-8 sm:h-10 border border-white/20 rounded-full"></div>
-                      </div>
-                      
-                      {/* Main Icon */}
-                      <div className="text-white text-3xl sm:text-4xl group-hover:scale-110 transition-transform duration-150 relative z-10">
-                        {service.icon}
-                      </div>
-                      
-                      {/* Floating Particles */}
-                      <div className="absolute top-1 right-1 w-0.5 h-0.5 bg-white/30 rounded-full animate-ping"></div>
-                      <div className="absolute bottom-1.5 left-2 w-0.5 h-0.5 bg-white/40 rounded-full animate-bounce delay-300"></div>
-                      <div className="absolute top-1/3 right-2 w-0.5 h-0.5 bg-white/50 rounded-full animate-pulse delay-700"></div>
+                    {/* Main Visual Container becomes image */}
+                    <div className={`w-full h-full rounded-md shadow-sm group-hover:shadow-md transition-all duration-150 group-hover:scale-105 relative overflow-hidden`}>
+                      <Image
+                        src={serviceImages[key] || '/img1.jpg'}
+                        alt={`${service.title} illustration`}
+                        fill
+                        className="object-cover"
+                        sizes="(min-width: 1024px) 33vw, 100vw"
+                        priority={key === activeService}
+                      />
                     </div>
                     
                     {/* Enhanced Floating Elements */}
@@ -323,8 +339,14 @@ export default function Services() {
                 className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 sm:p-6 shadow-xl border border-white/20 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer"
                 onClick={() => setActiveService(key)}
               >
-                <div className={`w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r ${service.color} rounded-xl flex items-center justify-center mb-3 sm:mb-4 mx-auto`}>
-                  <span className="text-xl sm:text-2xl">{service.icon}</span>
+                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl overflow-hidden mb-3 sm:mb-4 mx-auto relative shadow-sm">
+                  <Image
+                    src={serviceImages[key] || '/img1.jpg'}
+                    alt={`${service.title} thumbnail`}
+                    fill
+                    className="object-cover"
+                    sizes="64px"
+                  />
                 </div>
                 
                 <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3 text-center">{service.title}</h3>

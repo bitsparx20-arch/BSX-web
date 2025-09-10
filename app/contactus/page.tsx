@@ -1,7 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import emailjs from '@emailjs/browser';
 
 export default function ContactUs() {
   const [formData, setFormData] = useState({
@@ -10,11 +11,19 @@ export default function ContactUs() {
     company: '',
     phone: '',
     service: '',
-    message: ''
+    details: ''
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  // Initialize EmailJS
+  useEffect(() => {
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+    if (publicKey && publicKey !== 'YOUR_PUBLIC_KEY' && publicKey !== 'YOUR_PUBLIC_KEY_HERE') {
+      emailjs.init(publicKey);
+    }
+  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
@@ -26,11 +35,50 @@ export default function ContactUs() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    setSubmitStatus('idle');
+
+    try {
+      // Check if EmailJS is properly configured
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+      if (!publicKey || publicKey === 'YOUR_PUBLIC_KEY' || publicKey === 'YOUR_PUBLIC_KEY_HERE') {
+        // For now, simulate successful submission until EmailJS is configured
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        setSubmitStatus('success');
+        
+        // Reset form after success
+        setTimeout(() => {
+          setSubmitStatus('idle');
+          setFormData({
+            name: '',
+            email: '',
+            company: '',
+            phone: '',
+            service: '',
+            details: ''
+          });
+        }, 3000);
+        return;
+      }
+
+      // EmailJS configuration
+      const serviceId = 'service_kqpsvo5';
+      const templateId = 'template_fgrrkob';
+
+      // Template parameters matching your EmailJS template
+      const templateParams = {
+        name: formData.name,
+        email: formData.email,
+        company: formData.company,
+        phone: formData.phone,
+        service: formData.service,
+        details: formData.details
+      };
+
+      // Send email using EmailJS
+      await emailjs.send(serviceId, templateId, templateParams);
+      
       setSubmitStatus('success');
+      
       // Reset form after success
       setTimeout(() => {
         setSubmitStatus('idle');
@@ -40,10 +88,16 @@ export default function ContactUs() {
           company: '',
           phone: '',
           service: '',
-          message: ''
+          details: ''
         });
       }, 3000);
-    }, 2000);
+      
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -97,6 +151,17 @@ export default function ContactUs() {
               </div>
             )}
 
+            {submitStatus === 'error' && (
+              <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+                <div className="flex items-center">
+                  <svg className="w-5 h-5 text-red-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-red-800 font-medium">Failed to send message. Please try again or contact us directly.</span>
+                </div>
+              </div>
+            )}
+
             <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 <div>
@@ -110,7 +175,7 @@ export default function ContactUs() {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white/50 backdrop-blur-sm text-sm sm:text-base"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white/50 backdrop-blur-sm text-sm sm:text-base text-black placeholder:text-gray-400"
                     placeholder="John Doe"
                   />
                 </div>
@@ -126,7 +191,7 @@ export default function ContactUs() {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white/50 backdrop-blur-sm text-sm sm:text-base"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white/50 backdrop-blur-sm text-sm sm:text-base text-black placeholder:text-gray-400"
                     placeholder="john@company.com"
                   />
                 </div>
@@ -143,7 +208,7 @@ export default function ContactUs() {
                     name="company"
                     value={formData.company}
                     onChange={handleInputChange}
-                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white/50 backdrop-blur-sm text-sm sm:text-base"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white/50 backdrop-blur-sm text-sm sm:text-base text-black placeholder:text-gray-400"
                     placeholder="Your Company"
                   />
                 </div>
@@ -158,7 +223,7 @@ export default function ContactUs() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white/50 backdrop-blur-sm text-sm sm:text-base"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white/50 backdrop-blur-sm text-sm sm:text-base text-black placeholder:text-gray-400"
                     placeholder="+1 (555) 123-4567"
                   />
                 </div>
@@ -173,7 +238,7 @@ export default function ContactUs() {
                   name="service"
                   value={formData.service}
                   onChange={handleInputChange}
-                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white/50 backdrop-blur-sm text-sm sm:text-base"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white/50 backdrop-blur-sm text-sm sm:text-base text-black placeholder:text-gray-400"
                 >
                   <option value="">Select a service</option>
                   <option value="web-development">Web Development</option>
@@ -187,17 +252,17 @@ export default function ContactUs() {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="details" className="block text-sm font-medium text-gray-700 mb-2">
                   Project Details *
                 </label>
                 <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
+                  id="details"
+                  name="details"
+                  value={formData.details}
                   onChange={handleInputChange}
                   required
                   rows={4}
-                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white/50 backdrop-blur-sm resize-none text-sm sm:text-base"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white/50 backdrop-blur-sm resize-none text-sm sm:text-base text-black placeholder:text-gray-400"
                   placeholder="Tell us about your project, goals, and how we can help..."
                 />
               </div>
