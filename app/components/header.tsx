@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 
-export default function Header() {
+export default function Header() { 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isLightSection, setIsLightSection] = useState(false); 
     const pathname = usePathname();
