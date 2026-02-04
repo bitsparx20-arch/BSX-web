@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isLightSection, setIsLightSection] = useState(false);
+    const [isLightSection, setIsLightSection] = useState(false); 
     const pathname = usePathname();
 
     // Services & Contact Us: white header with white (light-theme) logo
