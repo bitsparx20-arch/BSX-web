@@ -1,17 +1,61 @@
 'use client'
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isLightSection, setIsLightSection] = useState(false);
+    const pathname = usePathname();
+
+    // Services & Contact Us: white header with white (light-theme) logo
+    const isLightPage = pathname === '/service' || pathname === '/contactus';
+    const useLightHeader = isLightSection || isLightPage;
+
+    useEffect(() => {
+        if (isLightPage) return;
+        const lightIds = new Set<string>();
+        const update = () => setIsLightSection(lightIds.has('section-hero1') || lightIds.has('section-cta'));
+        const root = document.querySelector('main');
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    const id = (entry.target as HTMLElement).id;
+                    if (entry.isIntersecting) lightIds.add(id);
+                    else lightIds.delete(id);
+                });
+                update();
+            },
+            { root: root || undefined, threshold: 0.05, rootMargin: '0px' }
+        );
+        const observe = () => {
+            ['section-hero1', 'section-cta'].forEach((id) => {
+                const el = document.getElementById(id);
+                if (el) observer.observe(el);
+            });
+        };
+        if (root) observe();
+        else setTimeout(observe, 100);
+        return () => observer.disconnect();
+    }, [isLightPage]);
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
+    const headerBg = useLightHeader ? 'bg-white' : 'bg-black';
+    const headerBorder = useLightHeader ? 'border-gray-200' : 'border-gray-800';
+    const navText = useLightHeader ? 'text-gray-700 hover:text-gray-900' : 'text-gray-300 hover:text-white';
+    const navHoverBg = useLightHeader ? 'hover:bg-gray-100' : 'hover:bg-gray-800';
+    const logoSrc = useLightHeader ? '/logo_white1.png' : '/logo_black1.png';
+    const mobileBg = useLightHeader ? 'bg-gray-100' : 'bg-gray-800';
+    const mobileBorder = useLightHeader ? 'border-gray-200' : 'border-gray-700';
+    const mobileLink = useLightHeader ? 'text-gray-700 hover:text-gray-900 hover:bg-gray-200' : 'text-gray-300 hover:text-white hover:bg-gray-700';
+    const menuButton = useLightHeader ? 'text-gray-700 hover:text-gray-900 hover:bg-gray-100' : 'text-gray-300 hover:text-white hover:bg-gray-800';
+
     return (
-        <header className="relative z-50">
+        <header className={`fixed top-0 left-0 right-0 z-50 ${headerBg} border-b ${headerBorder} transition-colors duration-300`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-28">
                     {/* Logo */}
@@ -19,18 +63,18 @@ export default function Header() {
                         <Link href="/" className="flex items-center group">
                             <div className="relative">
                                 <Image 
-                                    src="/logo_bg.png" 
+                                    src={logoSrc} 
                                     alt="Bitsparx Logo" 
                                     width={112}
                                     height={112}
-                                    className="h-28 w-auto transition-all duration-500 group-hover:scale-110 group-hover:drop-shadow-2xl group-hover:rotate-1"
+                                    className={`h-28 w-auto transition-all duration-500 group-hover:scale-110 group-hover:drop-shadow-2xl group-hover:rotate-1 ${useLightHeader ? 'drop-shadow-[0_1px_2px_rgba(0,0,0,0.08)]' : ''}`}
                                 />
                                 {/* Animated Glow Effect */}
-                                <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 via-cyan-400/20 to-blue-400/20 rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-500 blur-md scale-110 group-hover:scale-125"></div>
+                                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/30 via-cyan-500/30 to-blue-500/30 rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-500 blur-md scale-110 group-hover:scale-125"></div>
                                 {/* Floating Tech Elements */}
-                                <div className="absolute -top-2 -right-2 w-4 h-4 bg-cyan-400 rounded-full opacity-0 group-hover:opacity-100 animate-ping transition-all duration-500"></div>
-                                <div className="absolute -bottom-2 -left-2 w-3 h-3 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100 animate-pulse transition-all duration-500 delay-200"></div>
-                                <div className="absolute top-1/2 -right-4 w-2 h-2 bg-cyan-400 rounded-full opacity-0 group-hover:opacity-100 animate-bounce transition-all duration-500 delay-300"></div>
+                                <div className="absolute -top-2 -right-2 w-4 h-4 bg-cyan-500 rounded-full opacity-0 group-hover:opacity-100 animate-ping transition-all duration-500"></div>
+                                <div className="absolute -bottom-2 -left-2 w-3 h-3 bg-blue-500 rounded-full opacity-0 group-hover:opacity-100 animate-pulse transition-all duration-500 delay-200"></div>
+                                <div className="absolute top-1/2 -right-4 w-2 h-2 bg-cyan-500 rounded-full opacity-0 group-hover:opacity-100 animate-bounce transition-all duration-500 delay-300"></div>
                             </div>
                         </Link>
                     </div>
@@ -39,35 +83,35 @@ export default function Header() {
                     <nav className="hidden md:flex items-center space-x-8">
                         <Link 
                             href="/" 
-                            className="text-gray-700 hover:text-blue-600 px-5 py-3 rounded-xl text-base font-semibold transition-all duration-500 hover:bg-white/80 backdrop-blur-sm relative group hover:scale-105 hover:shadow-lg"
+                            className={`${navText} px-5 py-3 rounded-xl text-base font-semibold transition-all duration-500 ${navHoverBg} backdrop-blur-sm relative group hover:scale-105 hover:shadow-lg`}
                         >
                             <span className="relative z-10 group-hover:translate-y-[-2px] transition-all duration-500">Home</span>
-                            <div className="absolute inset-0 bg-white/80 backdrop-blur-sm rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-500 scale-95 group-hover:scale-100"></div>
-                            <div className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-cyan-500 group-hover:w-full transition-all duration-500 transform -translate-x-1/2"></div>
+                            <div className={`absolute inset-0 ${navHoverBg} backdrop-blur-sm rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-500 scale-95 group-hover:scale-100`}></div>
+                            <div className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 group-hover:w-full transition-all duration-500 transform -translate-x-1/2"></div>
                         </Link>
                         <Link 
                             href="/aboutus" 
-                            className="text-gray-700 hover:text-blue-600 px-5 py-3 rounded-xl text-base font-semibold transition-all duration-500 hover:bg-white/80 backdrop-blur-sm relative group hover:scale-105 hover:shadow-lg"
+                            className={`${navText} px-5 py-3 rounded-xl text-base font-semibold transition-all duration-500 ${navHoverBg} backdrop-blur-sm relative group hover:scale-105 hover:shadow-lg`}
                         >
                             <span className="relative z-10 group-hover:translate-y-[-2px] transition-all duration-500">About Us</span>
-                            <div className="absolute inset-0 bg-white/80 backdrop-blur-sm rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-500 scale-95 group-hover:scale-100"></div>
-                            <div className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-cyan-500 group-hover:w-full transition-all duration-500 transform -translate-x-1/2"></div>
+                            <div className={`absolute inset-0 ${navHoverBg} backdrop-blur-sm rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-500 scale-95 group-hover:scale-100`}></div>
+                            <div className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 group-hover:w-full transition-all duration-500 transform -translate-x-1/2"></div>
                         </Link>
                         <Link 
                             href="/service" 
-                            className="text-gray-700 hover:text-blue-600 px-5 py-3 rounded-xl text-base font-semibold transition-all duration-500 hover:bg-white/80 backdrop-blur-sm relative group hover:scale-105 hover:shadow-lg"
+                            className={`${navText} px-5 py-3 rounded-xl text-base font-semibold transition-all duration-500 ${navHoverBg} backdrop-blur-sm relative group hover:scale-105 hover:shadow-lg`}
                         >
                             <span className="relative z-10 group-hover:translate-y-[-2px] transition-all duration-500">Services</span>
-                            <div className="absolute inset-0 bg-white/80 backdrop-blur-sm rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-500 scale-95 group-hover:scale-100"></div>
-                            <div className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-cyan-500 group-hover:w-full transition-all duration-500 transform -translate-x-1/2"></div>
+                            <div className={`absolute inset-0 ${navHoverBg} backdrop-blur-sm rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-500 scale-95 group-hover:scale-100`}></div>
+                            <div className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 group-hover:w-full transition-all duration-500 transform -translate-x-1/2"></div>
                         </Link>
                         <Link 
                             href="/privacy" 
-                            className="text-gray-700 hover:text-blue-600 px-5 py-3 rounded-xl text-base font-semibold transition-all duration-500 hover:bg-white/80 backdrop-blur-sm relative group hover:scale-105 hover:shadow-lg"
+                            className={`${navText} px-5 py-3 rounded-xl text-base font-semibold transition-all duration-500 ${navHoverBg} backdrop-blur-sm relative group hover:scale-105 hover:shadow-lg`}
                         >
                             <span className="relative z-10 group-hover:translate-y-[-2px] transition-all duration-500">Privacy</span>
-                            <div className="absolute inset-0 bg-white/80 backdrop-blur-sm rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-500 scale-95 group-hover:scale-100"></div>
-                            <div className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-cyan-500 group-hover:w-full transition-all duration-500 transform -translate-x-1/2"></div>
+                            <div className={`absolute inset-0 ${navHoverBg} backdrop-blur-sm rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-500 scale-95 group-hover:scale-100`}></div>
+                            <div className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 group-hover:w-full transition-all duration-500 transform -translate-x-1/2"></div>
                         </Link>
                         {/*  */}
                         <Link 
@@ -88,7 +132,7 @@ export default function Header() {
                     <div className="md:hidden flex items-center">
                         <button
                             onClick={toggleMenu}
-                            className="inline-flex items-center justify-center p-4 rounded-xl text-gray-600 hover:text-blue-600 hover:bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 transition-all duration-500 hover:scale-105 hover:shadow-lg"
+                            className={`inline-flex items-center justify-center p-4 rounded-xl ${menuButton} backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 transition-all duration-500 hover:scale-105 hover:shadow-lg`}
                             aria-expanded="false"
                         >
                             <span className="sr-only">Open main menu</span>
@@ -121,38 +165,38 @@ export default function Header() {
 
             {/* Mobile Navigation */}
             <div className={`${isMenuOpen ? 'block' : 'hidden'} md:hidden`}>
-                <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white/80 backdrop-blur-sm rounded-xl mx-4">
+                <div className={`px-2 pt-2 pb-3 space-y-1 sm:px-3 ${mobileBg} backdrop-blur-sm rounded-xl mx-4 border ${mobileBorder}`}>
                     <Link 
                         href="/" 
-                        className="text-gray-600 hover:text-blue-600 block px-3 py-2 rounded-lg text-base font-medium transition-all duration-300 hover:bg-white/50"
+                        className={`${mobileLink} block px-3 py-2 rounded-lg text-base font-medium transition-all duration-300`}
                         onClick={() => setIsMenuOpen(false)}
                     >
                         Home
                     </Link>
                     <Link 
                         href="/aboutus" 
-                        className="text-gray-600 hover:text-blue-600 block px-3 py-2 rounded-lg text-base font-medium transition-all duration-300 hover:bg-white/50"
+                        className={`${mobileLink} block px-3 py-2 rounded-lg text-base font-medium transition-all duration-300`}
                         onClick={() => setIsMenuOpen(false)}
                     >
                         About Us
                     </Link>
                     <Link 
                         href="/service" 
-                        className="text-gray-600 hover:text-blue-600 block px-3 py-2 rounded-lg text-base font-medium transition-all duration-300 hover:bg-white/50"
+                        className={`${mobileLink} block px-3 py-2 rounded-lg text-base font-medium transition-all duration-300`}
                         onClick={() => setIsMenuOpen(false)}
                     >
                         Services
                     </Link>
                     <Link 
                         href="/team" 
-                        className="text-gray-600 hover:text-blue-600 block px-3 py-2 rounded-lg text-base font-medium transition-all duration-300 hover:bg-white/50"
+                        className={`${mobileLink} block px-3 py-2 rounded-lg text-base font-medium transition-all duration-300`}
                         onClick={() => setIsMenuOpen(false)}
                     >
                         Team
                     </Link>
                     <Link 
                         href="/privacy" 
-                        className="text-gray-600 hover:text-blue-600 block px-3 py-2 rounded-lg text-base font-medium transition-all duration-300 hover:bg-white/50"
+                        className={`${mobileLink} block px-3 py-2 rounded-lg text-base font-medium transition-all duration-300`}
                         onClick={() => setIsMenuOpen(false)}
                     >
                         Privacy

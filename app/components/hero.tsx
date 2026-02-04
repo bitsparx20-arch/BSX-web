@@ -32,64 +32,6 @@ export default function Hero() {
         /> */}
       </div>
       
-      {/* BITSPARX Background Watermark */}
-      <div className="absolute inset-0 flex items-center justify-center opacity-5 pointer-events-none">
-        <div className="text-9xl font-black text-blue-600 rotate-12 transform scale-150">BITSPARX</div>
-      </div>
-
-      {/* Tech Watermarks */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* Python Watermark */}
-        <div className="absolute top-20 left-8 opacity-15">
-          <div className="text-7xl font-black text-blue-400/60 rotate-12 transform scale-100 drop-shadow-lg">Python</div>
-        </div>
-        
-        {/* GenAI Watermark */}
-        <div className="absolute top-40 right-12 opacity-15">
-          <div className="text-6xl font-black text-cyan-400/60 -rotate-6 transform scale-100 drop-shadow-lg">GenAI</div>
-        </div>
-        
-        {/* Web Watermark */}
-        <div className="absolute top-60 left-1/4 opacity-15">
-          <div className="text-8xl font-black text-blue-400/60 rotate-3 transform scale-100 drop-shadow-lg">Web</div>
-        </div>
-        
-        {/* Software Watermark */}
-        <div className="absolute top-80 right-1/4 opacity-15">
-          <div className="text-6xl font-black text-purple-500/60 -rotate-12 transform scale-100 drop-shadow-lg">Software</div>
-        </div>
-        
-        {/* React Watermark */}
-        <div className="absolute top-32 right-1/3 opacity-15">
-          <div className="text-5xl font-black text-cyan-500/60 rotate-8 transform scale-100 drop-shadow-lg">React</div>
-        </div>
-        
-        {/* Cloud Watermark */}
-        <div className="absolute top-70 left-1/2 opacity-15">
-          <div className="text-7xl font-black text-cyan-500/60 -rotate-3 transform scale-100 drop-shadow-lg">Cloud</div>
-        </div>
-        
-        {/* API Watermark */}
-        <div className="absolute top-90 left-1/6 opacity-15">
-          <div className="text-6xl font-black text-blue-400/60 rotate-15 transform scale-100 drop-shadow-lg">API</div>
-        </div>
-        
-        {/* Mobile Watermark */}
-        <div className="absolute top-50 left-2/3 opacity-15">
-          <div className="text-5xl font-black text-cyan-400/60 -rotate-8 transform scale-100 drop-shadow-lg">Mobile</div>
-        </div>
-        
-        {/* AI Watermark */}
-        <div className="absolute top-100 right-1/6 opacity-15">
-          <div className="text-6xl font-black text-purple-400/60 rotate-5 transform scale-100 drop-shadow-lg">AI</div>
-        </div>
-        
-        {/* DevOps Watermark */}
-        <div className="absolute top-30 left-1/3 opacity-15">
-          <div className="text-5xl font-black text-cyan-400/60 -rotate-10 transform scale-100 drop-shadow-lg">DevOps</div>
-        </div>
-      </div>
-
       {/* Main Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-[calc(100dvh-7rem)] flex items-center py-8 lg:py-12">
         <div className="grid lg:grid-cols-2 gap-12 items-center">

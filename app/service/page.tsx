@@ -11,7 +11,7 @@ export default function Services() {
 
   // Mapping of service keys to illustrative images from /public
   const serviceImages: Record<string, string> = {
-    automation: '/img1.jpg',
+    automation: '/aboutus.jpg',
     webDevelopment: '/hero1.png',
     software: '/img3.jpg',
     data: '/img4.jpg',
@@ -130,12 +130,38 @@ export default function Services() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-cyan-50 pt-5">
+    <div className="min-h-screen pt-28">
+      {/* Top section: clean white, subtle gradient, refined heading per reference */}
+      <section className="relative bg-white overflow-hidden py-14 sm:py-20 border-b border-slate-100">
+        {/* Very subtle center-right purple/blue gradient hint */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_60%_30%,rgba(147,197,253,0.08),transparent_50%)]" aria-hidden />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_40%_at_70%_20%,rgba(196,181,253,0.06),transparent_50%)]" aria-hidden />
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-3">
+              <span className="text-slate-900">BITSPA</span>
+              <span className="text-orange-500" style={{ textShadow: '0 0 24px rgba(249,115,22,0.35), 0 0 48px rgba(249,115,22,0.15)' }}>RX</span>
+            </h1>
+            <p className="text-xl sm:text-2xl md:text-3xl font-semibold text-slate-700 tracking-wide mb-8">
+              Services
+            </p>
+            <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-medium mb-4">
+              Empowering Your Business with Innovative Digital Solutions
+            </p>
+            <p className="text-sm sm:text-base text-slate-500 max-w-xl mx-auto leading-relaxed">
+              From automation to web development, we provide comprehensive digital solutions that drive growth, efficiency, and innovation.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Dark section: tabs + service content */}
+      <section className="relative bg-gradient-to-r from-black via-gray-900 to-gray-800 min-h-screen">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-20 left-4 sm:left-10 w-48 sm:w-72 h-48 sm:h-72 bg-gradient-to-r from-blue-400/20 to-cyan-400/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-4 sm:right-10 w-64 sm:w-96 h-64 sm:h-96 bg-gradient-to-r from-purple-400/15 to-pink-400/15 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-56 sm:w-80 h-56 sm:h-80 bg-gradient-to-r from-indigo-400/15 to-blue-400/15 rounded-full blur-3xl animate-pulse delay-500"></div>
+        <div className="absolute top-20 left-4 sm:left-10 w-48 sm:w-72 h-48 sm:h-72 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-4 sm:right-10 w-64 sm:w-96 h-64 sm:h-96 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-56 sm:w-80 h-56 sm:h-80 bg-gradient-to-r from-indigo-500/10 to-blue-500/10 rounded-full blur-3xl animate-pulse delay-500"></div>
       </div>
 
              {/* Tech Watermarks */}
@@ -150,23 +176,6 @@ export default function Services() {
 
       {/* Main Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16">
-        {/* Header Section */}
-        <div className="text-center mb-12 sm:mb-16">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-gray-900 mb-4 sm:mb-6 leading-tight tracking-tight">
-            <span className="block mb-2 sm:mb-3 bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent">
-              Bitsparx Services
-            </span>
-            <span className="block text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-light text-gray-600 tracking-wide">
-              Empowering Your Business with Innovative Digital Solutions
-            </span>
-          </h1>
-          
-          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-light tracking-wide px-4">
-            From automation to web development, we provide comprehensive digital solutions that drive growth, 
-            efficiency, and innovation. Our expertise spans the entire technology spectrum, ensuring your 
-            business stays ahead in the digital age.
-          </p>
-        </div>
 
         {/* Service Navigation */}
         <div className="mb-4 sm:mb-6">
@@ -178,7 +187,7 @@ export default function Services() {
                 className={`group relative px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg font-medium transition-all duration-200 transform hover:scale-105 text-xs sm:text-sm ${
                   activeService === key
                     ? `bg-gradient-to-r ${service.color} text-white shadow-md ring-1 ring-white/20`
-                    : 'bg-white/90 backdrop-blur-md text-gray-700 hover:bg-white hover:shadow-md border border-white/30 hover:border-white/50'
+                    : 'bg-gray-800/90 backdrop-blur-md text-gray-300 hover:bg-gray-700 hover:shadow-md border border-gray-700/50 hover:border-gray-600/50'
                 }`}
               >
                 {/* Background Glow for Active State */}
@@ -214,56 +223,54 @@ export default function Services() {
                 activeService === key ? 'block opacity-100 scale-100' : 'hidden opacity-0 scale-95'
               }`}
             >
-                             <div className="bg-white/90 backdrop-blur-md rounded-lg p-2 sm:p-2.5 shadow-md border border-white/30 hover:shadow-lg transition-all duration-150 hover:scale-[1.002]">
-                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 items-stretch">
+                             <div className="bg-gray-800/90 backdrop-blur-md rounded-xl p-5 sm:p-6 lg:p-8 shadow-md border border-gray-700/50 hover:shadow-lg transition-all duration-150 hover:scale-[1.002]">
+                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-6 items-stretch">
                    {/* Service Content */}
-                   <div className="lg:col-span-2 space-y-2 sm:space-y-2.5">
+                   <div className="lg:col-span-2 space-y-4 sm:space-y-5">
                      {/* Header with Enhanced Icon */}
-                     <div className="flex items-center mb-2 sm:mb-2.5 group">
-                       <div className="relative mr-2">
-                         <div className={`w-8 h-8 sm:w-9 sm:h-9 bg-gradient-to-br ${service.color} rounded-md flex items-center justify-center shadow-sm group-hover:shadow-md transition-all duration-150 group-hover:scale-105`}>
-                           <span className="text-sm sm:text-base">{service.icon}</span>
+                     <div className="flex items-center mb-3 sm:mb-4 group">
+                       <div className="relative mr-3">
+                         <div className={`w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br ${service.color} rounded-lg flex items-center justify-center shadow-sm group-hover:shadow-md transition-all duration-150 group-hover:scale-105`}>
+                           <span className="text-lg sm:text-xl">{service.icon}</span>
                          </div>
-                         {/* Glow Effect */}
-                         <div className={`absolute inset-0 bg-gradient-to-br ${service.color} rounded-md blur-sm opacity-10 group-hover:opacity-15 transition-all duration-150`}></div>
+                         <div className={`absolute inset-0 bg-gradient-to-br ${service.color} rounded-lg blur-sm opacity-10 group-hover:opacity-15 transition-all duration-150`}></div>
                        </div>
                        <div>
-                         <h2 className="text-sm sm:text-base font-bold text-gray-900 mb-0.5 group-hover:text-gray-800 transition-colors duration-150">
+                         <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 group-hover:text-gray-200 transition-colors duration-150">
                            {service.title}
                          </h2>
-                         <div className={`w-6 sm:w-7 h-0.5 bg-gradient-to-r ${service.color} rounded-full`}></div>
+                         <div className={`w-10 sm:w-12 h-0.5 bg-gradient-to-r ${service.color} rounded-full`}></div>
                        </div>
                      </div>
                     
                     {/* Enhanced Description */}
                     <div className="relative">
-                      <p className="text-xs sm:text-sm text-gray-600 leading-tight">
+                      <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
                         {service.description}
                       </p>
-                      {/* Decorative Quote Mark */}
-                      <div className={`absolute -top-0.5 -left-0.5 text-sm sm:text-lg text-gray-200 font-serif opacity-10`}>&ldquo;</div>
+                      <div className={`absolute -top-0.5 -left-0.5 text-lg sm:text-xl text-gray-200 font-serif opacity-10`}>&ldquo;</div>
                     </div>
                     
                     {/* Enhanced Features Section */}
-                    <div className="space-y-1">
-                      <h3 className="text-xs sm:text-sm font-bold text-gray-800 mb-1 flex items-center">
-                        <svg className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-blue-500 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="space-y-3">
+                      <h3 className="text-sm sm:text-base font-bold text-white mb-2 flex items-center">
+                        <svg className="w-4 h-4 sm:w-5 sm:h-5 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                         Key Features
                       </h3>
-                      <div className="grid gap-0.5">
+                      <div className="grid gap-2">
                         {service.features.map((feature, index) => (
                           <div 
                             key={index} 
-                            className="flex items-center p-0.5 bg-gradient-to-r from-gray-50 to-white rounded border border-gray-100 hover:border-gray-200 hover:shadow-sm transition-all duration-100 group/feature"
+                            className="flex items-center p-2.5 sm:p-3 bg-gray-700/80 rounded-lg border border-gray-600 hover:border-gray-500 hover:shadow-sm transition-all duration-100 group/feature"
                           >
-                            <div className={`w-0.5 h-0.5 bg-gradient-to-r ${service.color} rounded-full mr-1 group-hover/feature:scale-110 transition-transform duration-100`}></div>
-                            <span className="text-xs text-gray-700 font-medium group-hover/feature:text-gray-900 transition-colors duration-100">
+                            <div className={`w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gradient-to-r ${service.color} rounded-full mr-2 sm:mr-3 flex-shrink-0 group-hover/feature:scale-110 transition-transform duration-100`}></div>
+                            <span className="text-sm sm:text-base text-gray-300 font-medium group-hover/feature:text-white transition-colors duration-100">
                               {feature}
                             </span>
                             <div className="ml-auto opacity-0 group-hover/feature:opacity-100 transition-opacity duration-100">
-                              <svg className={`w-1.5 h-1.5 text-transparent bg-gradient-to-r ${service.color} bg-clip-text`} fill="currentColor" viewBox="0 0 20 20">
+                              <svg className={`w-4 h-4 text-transparent bg-gradient-to-r ${service.color} bg-clip-text`} fill="currentColor" viewBox="0 0 20 20">
                                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                               </svg>
                             </div>
@@ -288,10 +295,10 @@ export default function Services() {
                     </div>
                     
                     {/* Enhanced Floating Elements */}
-                    <div className="absolute -top-1 -right-1 w-3 h-3 sm:w-4 sm:h-4 bg-white/95 backdrop-blur-sm rounded-md shadow-sm flex items-center justify-center border border-white/50 group-hover:scale-105 transition-transform duration-150">
+                    <div className="absolute -top-1 -right-1 w-3 h-3 sm:w-4 sm:h-4 bg-gray-800/95 backdrop-blur-sm rounded-md shadow-sm flex items-center justify-center border border-gray-700/50 group-hover:scale-105 transition-transform duration-150">
                       <div className={`w-1 h-1 sm:w-1.5 sm:h-1.5 bg-gradient-to-r ${service.color} rounded-full animate-pulse`}></div>
                     </div>
-                    <div className="absolute -bottom-1 -left-1 w-2.5 h-2.5 sm:w-3 sm:h-3 bg-white/95 backdrop-blur-sm rounded-md shadow-sm flex items-center justify-center border border-white/50 group-hover:scale-105 transition-transform duration-150">
+                    <div className="absolute -bottom-1 -left-1 w-2.5 h-2.5 sm:w-3 sm:h-3 bg-gray-800/95 backdrop-blur-sm rounded-md shadow-sm flex items-center justify-center border border-gray-700/50 group-hover:scale-105 transition-transform duration-150">
                       <div className={`w-0.5 h-0.5 sm:w-1 sm:h-1 bg-gradient-to-r ${service.color} rounded-full animate-bounce`}></div>
                     </div>
                     
@@ -301,23 +308,23 @@ export default function Services() {
                 </div>
                 
                 {/* Bottom Action Bar */}
-                <div className="mt-2 sm:mt-3 pt-2 border-t border-gray-100">
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-0">
-                    <div className="flex items-center space-x-1 sm:space-x-1.5">
-                      <div className="flex items-center space-x-1">
-                        <div className="w-0.5 h-0.5 bg-green-500 rounded-full animate-pulse"></div>
-                        <span className="text-xs text-gray-600">Available Now</span>
+                <div className="mt-4 sm:mt-5 pt-4 border-t border-gray-700">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0">
+                    <div className="flex items-center space-x-4 sm:space-x-6">
+                      <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                        <span className="text-sm sm:text-base text-gray-300">Available Now</span>
                       </div>
-                      <div className="flex items-center space-x-1">
-                        <svg className="w-2 h-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <div className="flex items-center space-x-2">
+                        <svg className="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        <span className="text-xs text-gray-600">24/7 Support</span>
+                        <span className="text-sm sm:text-base text-gray-300">24/7 Support</span>
                       </div>
                     </div>
                     <button 
                       onClick={() => openModal(key)}
-                      className={`px-2 sm:px-2.5 py-1 bg-gradient-to-r ${service.color} text-white rounded text-xs font-medium hover:shadow-sm transition-all duration-100 hover:scale-105`}
+                      className={`px-4 sm:px-5 py-2.5 sm:py-3 bg-gradient-to-r ${service.color} text-white rounded-lg text-sm sm:text-base font-medium hover:shadow-sm transition-all duration-100 hover:scale-105`}
                     >
                       Learn More
                     </button>
@@ -328,42 +335,44 @@ export default function Services() {
           ))}
         </div>
 
-        {/* All Services Grid */}
-        <div className="mb-12 sm:mb-16">
-          <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-8 sm:mb-12">Our Complete Service Portfolio</h2>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {Object.entries(services).map(([key, service]) => (
-              <div
-                key={key}
-                className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 sm:p-6 shadow-xl border border-white/20 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer"
-                onClick={() => setActiveService(key)}
-              >
-                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl overflow-hidden mb-3 sm:mb-4 mx-auto relative shadow-sm">
-                  <Image
-                    src={serviceImages[key] || '/img1.jpg'}
-                    alt={`${service.title} thumbnail`}
-                    fill
-                    className="object-cover"
-                    sizes="64px"
-                  />
+        {/* All Services Grid - white section */}
+        <div className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] bg-white py-12 sm:py-16 lg:py-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl sm:text-3xl font-bold text-center text-slate-900 mb-8 sm:mb-12">Our Complete Service Portfolio</h2>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              {Object.entries(services).map(([key, service]) => (
+                <div
+                  key={key}
+                  className="bg-slate-50 rounded-2xl p-5 sm:p-6 shadow-md border border-slate-200/80 hover:shadow-xl hover:border-slate-300 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
+                  onClick={() => setActiveService(key)}
+                >
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl overflow-hidden mb-3 sm:mb-4 mx-auto relative shadow-sm">
+                    <Image
+                      src={serviceImages[key] || '/img1.jpg'}
+                      alt={`${service.title} thumbnail`}
+                      fill
+                      className="object-cover"
+                      sizes="64px"
+                    />
+                  </div>
+                  
+                  <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-2 sm:mb-3 text-center">{service.title}</h3>
+                  
+                  <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                    {service.description.length > 120 
+                      ? `${service.description.substring(0, 120)}...` 
+                      : service.description
+                    }
+                  </p>
                 </div>
-                
-                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3 text-center">{service.title}</h3>
-                
-                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
-                  {service.description.length > 120 
-                    ? `${service.description.substring(0, 120)}...` 
-                    : service.description
-                  }
-                </p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Why Choose Bitsparx */}
-        <div className="mb-12 sm:mb-16">
+        {/* Why Choose Bitsparx - extra top space after white portfolio section */}
+        <div className="mt-16 sm:mt-20 lg:mt-24 mb-12 sm:mb-16">
           <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 rounded-2xl p-6 sm:p-8 text-white">
             <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8">Why Choose Bitsparx?</h2>
             
@@ -403,9 +412,9 @@ export default function Services() {
 
         {/* Call to Action */}
         <div className="text-center">
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-xl border border-white/20">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3 sm:mb-4">Ready to Get Started?</h2>
-            <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8 max-w-2xl mx-auto px-4">
+          <div className="bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-xl border border-gray-700/50">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3 sm:mb-4">Ready to Get Started?</h2>
+            <p className="text-base sm:text-lg text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto px-4">
               Let&apos;s discuss how our services can transform your business. Get in touch with our team to explore the possibilities.
             </p>
             
@@ -422,7 +431,7 @@ export default function Services() {
               
               <Link 
                 href="/" 
-                className="bg-white/80 backdrop-blur-sm hover:bg-white text-gray-700 hover:text-gray-900 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl border border-white/20 inline-flex items-center justify-center"
+                className="bg-gray-700/80 backdrop-blur-sm hover:bg-gray-600 text-gray-300 hover:text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl border border-gray-600/50 inline-flex items-center justify-center"
               >
                 Back to Home
               </Link>
@@ -430,6 +439,7 @@ export default function Services() {
           </div>
         </div>
       </div>
+      </section>
 
       {/* Modal */}
       {isModalOpen && selectedService && (

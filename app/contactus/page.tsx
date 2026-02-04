@@ -101,35 +101,32 @@ export default function ContactUs() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-cyan-50 pt-5">
-      {/* Animated Background Elements */}
+    <div className="min-h-screen bg-white relative pt-28">
+      {/* Subtle background accent */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-20 left-4 sm:left-10 w-48 sm:w-72 h-48 sm:h-72 bg-gradient-to-r from-blue-400/20 to-cyan-400/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-4 sm:right-10 w-64 sm:w-96 h-64 sm:h-96 bg-gradient-to-r from-purple-400/15 to-pink-400/15 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-56 sm:w-80 h-56 sm:h-80 bg-gradient-to-r from-indigo-400/15 to-blue-400/15 rounded-full blur-3xl animate-pulse delay-500"></div>
+        <div className="absolute top-40 right-0 w-96 h-96 bg-blue-50/40 rounded-full blur-3xl" />
+        <div className="absolute bottom-40 left-0 w-80 h-80 bg-purple-50/30 rounded-full blur-3xl" />
       </div>
-
 
       {/* Main Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16">
         {/* Header Section */}
         <div className="text-center mb-8 sm:mb-12">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-3 sm:mb-4 leading-tight tracking-tight">
-            <span className="block mb-2 bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-3 sm:mb-4 leading-tight tracking-tight">
+            <span className="block mb-2 bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent">
               Let&apos;s Build Something
             </span>
-            <span className="block text-lg sm:text-xl md:text-2xl lg:text-3xl font-light text-gray-700 tracking-wide">
+            <span className="block text-lg sm:text-xl md:text-2xl lg:text-3xl font-light text-slate-700 tracking-wide">
               Amazing Together
             </span>
           </h1>
           
           <div className="relative">
-            <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed font-light tracking-wide px-4 relative z-10">
+            <p className="text-base sm:text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed font-light tracking-wide px-4 relative z-10">
               Ready to transform your ideas into powerful digital solutions? Get in touch with our team of experts. 
-              We&apos;re here to help you build the future, one line of code at a time.
+              We&apos;re here to help you <span className="text-slate-900 font-medium underline decoration-purple-400/60 underline-offset-2">build the future</span>, one line of code at a time.
             </p>
-            {/* Decorative underline */}
-            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 rounded-full mt-3"></div>
+            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 rounded-full mt-3" />
           </div>
         </div>
 
@@ -137,8 +134,8 @@ export default function ContactUs() {
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-start">
           
           {/* Contact Form */}
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 sm:p-6 md:p-8 shadow-xl border border-white/20">
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">Send us a Message</h2>
+          <div className="bg-slate-100 rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg border border-slate-200">
+            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 sm:mb-6">Send us a Message</h2>
             
             {submitStatus === 'success' && (
               <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
@@ -165,7 +162,7 @@ export default function ContactUs() {
             <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-2">
                     Full Name *
                   </label>
                   <input
@@ -175,13 +172,13 @@ export default function ContactUs() {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white/50 backdrop-blur-sm text-sm sm:text-base text-black placeholder:text-gray-400"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white text-sm sm:text-base text-slate-900 placeholder:text-slate-400"
                     placeholder="John Doe"
                   />
                 </div>
                 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-2">
                     Email Address *
                   </label>
                   <input
@@ -191,7 +188,7 @@ export default function ContactUs() {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white/50 backdrop-blur-sm text-sm sm:text-base text-black placeholder:text-gray-400"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white text-sm sm:text-base text-slate-900 placeholder:text-slate-400"
                     placeholder="john@company.com"
                   />
                 </div>
@@ -199,7 +196,7 @@ export default function ContactUs() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 <div>
-                  <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="company" className="block text-sm font-medium text-slate-700 mb-2">
                     Company
                   </label>
                   <input
@@ -208,13 +205,13 @@ export default function ContactUs() {
                     name="company"
                     value={formData.company}
                     onChange={handleInputChange}
-                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white/50 backdrop-blur-sm text-sm sm:text-base text-black placeholder:text-gray-400"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white text-sm sm:text-base text-slate-900 placeholder:text-slate-400"
                     placeholder="Your Company"
                   />
                 </div>
                 
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="phone" className="block text-sm font-medium text-slate-700 mb-2">
                     Phone Number
                   </label>
                   <input
@@ -223,14 +220,14 @@ export default function ContactUs() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white/50 backdrop-blur-sm text-sm sm:text-base text-black placeholder:text-gray-400"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white text-sm sm:text-base text-slate-900 placeholder:text-slate-400"
                     placeholder="+1 (555) 123-4567"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="service" className="block text-sm font-medium text-slate-700 mb-2">
                   Service Interest
                 </label>
                 <select
@@ -238,7 +235,7 @@ export default function ContactUs() {
                   name="service"
                   value={formData.service}
                   onChange={handleInputChange}
-                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white/50 backdrop-blur-sm text-sm sm:text-base text-black placeholder:text-gray-400"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white text-sm sm:text-base text-slate-900"
                 >
                   <option value="">Select a service</option>
                   <option value="web-development">Web Development</option>
@@ -252,7 +249,7 @@ export default function ContactUs() {
               </div>
 
               <div>
-                <label htmlFor="details" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="details" className="block text-sm font-medium text-slate-700 mb-2">
                   Project Details *
                 </label>
                 <textarea
@@ -262,7 +259,7 @@ export default function ContactUs() {
                   onChange={handleInputChange}
                   required
                   rows={4}
-                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white/50 backdrop-blur-sm resize-none text-sm sm:text-base text-black placeholder:text-gray-400"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white resize-none text-sm sm:text-base text-slate-900 placeholder:text-slate-400"
                   placeholder="Tell us about your project, goals, and how we can help..."
                 />
               </div>
@@ -290,8 +287,8 @@ export default function ContactUs() {
           {/* Contact Information */}
           <div className="space-y-6 sm:space-y-8">
             {/* Quick Contact */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 sm:p-6 md:p-8 shadow-xl border border-white/20">
-              <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 sm:mb-6">Get in Touch</h3>
+            <div className="bg-slate-100 rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg border border-slate-200">
+              <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-4 sm:mb-6">Get in Touch</h3>
               
               <div className="space-y-4">
                 <div className="flex items-start space-x-4">
@@ -301,9 +298,9 @@ export default function ContactUs() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-gray-900">Email</p>
-                    <p className="text-gray-600">bitsparx20@gmail.com</p>
-                    <p className="text-gray-600">admin@bitsparx.com</p>
+                    <p className="text-sm font-medium text-slate-900">Email</p>
+                    <p className="text-slate-600">bitsparx20@gmail.com</p>
+                    <p className="text-slate-600">admin@bitsparx.com</p>
                   </div>
                 </div>
 
@@ -314,8 +311,8 @@ export default function ContactUs() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-gray-900">Phone</p>
-                    <p className="text-gray-600">+1 (555) 123-4567</p>
+                    <p className="text-sm font-medium text-slate-900">Phone</p>
+                    <p className="text-slate-600">+1 (555) 123-4567</p>
                   </div>
                 </div>
 
@@ -327,52 +324,52 @@ export default function ContactUs() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-gray-900">Location</p>
-                    <p className="text-gray-600">Mumbai,India</p>
+                    <p className="text-sm font-medium text-slate-900">Location</p>
+                    <p className="text-slate-600">Mumbai, India</p>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Services Overview */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 sm:p-6 md:p-8 shadow-xl border border-white/20">
-              <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 sm:mb-6">Our Services</h3>
+            <div className="bg-slate-100 rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg border border-slate-200">
+              <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-4 sm:mb-6">Our Services</h3>
               
               <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                <div className="text-center p-3 sm:p-4 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-lg border border-blue-100">
+                <div className="text-center p-3 sm:p-4 bg-slate-50 rounded-lg border border-slate-200 shadow-sm">
                   <div className="w-6 h-6 sm:w-8 sm:h-8 bg-blue-500 rounded-lg mx-auto mb-2 flex items-center justify-center">
                     <svg className="w-3 h-3 sm:w-4 sm:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                   </div>
-                  <p className="text-xs sm:text-sm font-medium text-gray-700">Web Development</p>
+                  <p className="text-xs sm:text-sm font-medium text-slate-700">Web Development</p>
                 </div>
                 
-                <div className="text-center p-3 sm:p-4 bg-gradient-to-br from-purple-50 to-pink-50 rounded-lg border border-purple-100">
+                <div className="text-center p-3 sm:p-4 bg-slate-50 rounded-lg border border-slate-200 shadow-sm">
                   <div className="w-6 h-6 sm:w-8 sm:h-8 bg-purple-500 rounded-lg mx-auto mb-2 flex items-center justify-center">
                     <svg className="w-3 h-3 sm:w-4 sm:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                     </svg>
                   </div>
-                  <p className="text-xs sm:text-sm font-medium text-gray-700">AI Solutions</p>
+                  <p className="text-xs sm:text-sm font-medium text-slate-700">AI Solutions</p>
                 </div>
                 
-                <div className="text-center p-3 sm:p-4 bg-gradient-to-br from-cyan-50 to-blue-50 rounded-lg border border-cyan-100">
+                <div className="text-center p-3 sm:p-4 bg-slate-50 rounded-lg border border-slate-200 shadow-sm">
                   <div className="w-6 h-6 sm:w-8 sm:h-8 bg-cyan-500 rounded-lg mx-auto mb-2 flex items-center justify-center">
                     <svg className="w-3 h-3 sm:w-4 sm:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
                     </svg>
                   </div>
-                  <p className="text-xs sm:text-sm font-medium text-gray-700">Mobile Apps</p>
+                  <p className="text-xs sm:text-sm font-medium text-slate-700">Mobile Apps</p>
                 </div>
                 
-                <div className="text-center p-3 sm:p-4 bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg border border-green-100">
+                <div className="text-center p-3 sm:p-4 bg-slate-50 rounded-lg border border-slate-200 shadow-sm">
                   <div className="w-6 h-6 sm:w-8 sm:h-8 bg-green-500 rounded-lg mx-auto mb-2 flex items-center justify-center">
                     <svg className="w-3 h-3 sm:w-4 sm:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
                     </svg>
                   </div>
-                  <p className="text-xs sm:text-sm font-medium text-gray-700">Custom Software</p>
+                  <p className="text-xs sm:text-sm font-medium text-slate-700">Custom Software</p>
                 </div>
               </div>
             </div>
