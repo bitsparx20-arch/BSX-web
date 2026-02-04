@@ -9,7 +9,7 @@ export default function Header() {
     const [isLightSection, setIsLightSection] = useState(false); 
     const pathname = usePathname();
 
-    // Services & Contact Us: white header with white (light-theme) logo
+    // Services & Contact Us: white header with white (light-theme) logo 
     const isLightPage = pathname === '/service' || pathname === '/contactus';
     const useLightHeader = isLightSection || isLightPage;
 
