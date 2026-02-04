@@ -18,6 +18,9 @@ export const metadata: Metadata = {
   creator: "Bitsparx",
   publisher: "Bitsparx",
   robots: "index, follow",
+  verification: {
+    google: "Equ43A5oYynhhd2ijqY-_zzb-c6PShfWLmHW98LSZU4",
+  },
   icons: {
     icon: "/logo1.ico",
   },
